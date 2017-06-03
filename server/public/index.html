@@ -22,7 +22,9 @@
   <![endif]-->
 
   <script src="./js/dropzone.js"></script>
+  <script src="./js/dropzoneconfig.js"></script>
 
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/style.css">  
 </head>
 
@@ -49,14 +51,11 @@
 			<button type="button" class="btn btn-secondary"><p>title</p></button>			
 		</div>
 		<div class="col">
-			<button type="button" class="btn-upload btn btn-secondary">
-				<form action="/upload" class="dropzone">
-				  <div class="fallback">
-				    <input name="file" type="file" multiple />
-				  </div>
-				</form>
-			</button>		
-
+			<div class="holdingDiv">
+			  <form action="/api/upload" name="upload" class="dropzone dz-clickable" id="dropzoneArea" enctype="multipart/form-data" method = "post">
+			    <input  type="file" name="theFile" />                      
+			  </form>
+			</div>
 		</div>
 	</div>
 
