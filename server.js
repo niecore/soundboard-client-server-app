@@ -24,24 +24,24 @@ router.get('/sounds', function(req, res) {
                        return fs.statSync(soundDir + a).mtime.getTime() - 
                               fs.statSync(soundDir + b).mtime.getTime();
                    });
-        res.send(files);
+        res.json(files);
     });
 });
 
-router.get('/:sound/', function(req, res) {
-	play.sound(soundDir + req.params.sound + soundExt);
-    res.send(200)
+router.get('/play', function(req, res) {
+	play.sound(soundDir + req.param('id'));
+    res.redirect("back");
 });
 
-router.delete('/:sound/', function(req, res) {
-    fs.unlink(soundDir + req.params.sound + soundExt ,function() {
+router.get('/delete', function(req, res) {
+    fs.unlink(soundDir + req.param('id') ,function() {
         res.send(200)   
     });
 });
 
 router.post('/upload', multipartMiddleware,  function(req, res) {
-	fs.readFile(req.files.theFile.path, function (err, data) {
-	  var newPath = __dirname +  '\\sounds\\' + req.files.theFile.name;
+	fs.readFile(req.files.file.path, function (err, data) {
+	  var newPath = __dirname +  '\\sounds\\' + req.files.file.name;
 	  fs.writeFile(newPath, data, function (err) {
 	    console.log(newPath)
 	    res.redirect("back");
