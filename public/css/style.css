@@ -22,8 +22,13 @@
 	height: 50px;
 }
 
+.upload-box {
+	margin: 10px;
+}
 
 
-.btn-upload {
+
+.upload-box form{
+	
 	border-style: dashed;
 }

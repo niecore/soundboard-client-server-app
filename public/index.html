@@ -21,43 +21,42 @@
 	<script src="./js/dropzone.js"></script>
 	<script src="./js/dropzoneconfig.js"></script>
 
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/style.css">  
+	
+	<link rel="stylesheet" href="css/dropzone.css">  
 	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div id="button-box" class="container-fluid buttons">
 
-<script>
-var apiURL = "/api/sounds";
-$.getJSON(apiURL, function(data) {
-	var sounds = [];
-	  $.each( data, function() {
+	<script>
+	var apiURL = "/api/sounds";
+	$.getJSON(apiURL, function(data) {
+		var sounds = [];
+		  $.each( data, function() {
 
-		$('#button-box').prepend( '<div class="form-box">'
-								+ '<form class="left" method="GET" action="/api/play">'
-								+ '<input type="hidden" name="id" value="' + this + '" />'
-								+ '<button type="submit" name="submit" class="btn btn-secondary"><p>' + this + '</p></button>'
-								+ '</form>'
-								+ '<form class="right" method="GET" action="/api/delete">'
-								+ '<input type="hidden" name="id" value="' + this + '" />'
-								+ '<button type="submit" name="submit" class="btn delete"><i class="fa fa-trash" aria-hidden="true"></i></button>'
-								+ '</form>'
-								+ '</div>'
+			$('#button-box').prepend( '<div class="form-box">'
+									+ '<form class="left" method="GET" action="/api/play">'
+									+ '<input type="hidden" name="id" value="' + this + '" />'
+									+ '<button type="submit" name="submit" class="btn btn-secondary"><p>' + this + '</p></button>'
+									+ '</form>'
+									+ '<form class="right" method="GET" action="/api/delete">'
+									+ '<input type="hidden" name="id" value="' + this + '" />'
+									+ '<button type="submit" name="submit" class="btn delete"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+									+ '</form>'
+									+ '</div>'
 
-			);
-	  	
-	  });
-});
-</script>
+				);
+		  	
+		  });
+	});
+	</script>
 
-<div class="holdingDiv">
-  <form action="/api/upload" name="upload" class="dropzone dz-clickable" id="dropzoneArea" enctype="multipart/form-data" method = "post">
-    <input  type="file" name="theFile" />                      
-  </form>
-</div>
+	<div class="upload-box">
+	  <form action="/api/upload" name="upload" class="dropzone dz-clickable" id="upload-area" enctype="multipart/form-data" method = "post"></form>
+	</div>
 
 
 </div>
