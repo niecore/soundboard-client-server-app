@@ -35,13 +35,13 @@ router.get('/play', function(req, res) {
 
 router.get('/delete', function(req, res) {
     fs.unlink(soundDir + req.param('id') ,function() {
-        res.send(200)   
+        res.redirect("back");   
     });
 });
 
 router.post('/upload', multipartMiddleware,  function(req, res) {
 	fs.readFile(req.files.file.path, function (err, data) {
-	  var newPath = __dirname +  '\\sounds\\' + req.files.file.name;
+	  var newPath = __dirname +  '/sounds/' + req.files.file.name;
 	  fs.writeFile(newPath, data, function (err) {
 	    console.log(newPath)
 	    res.redirect("back");
