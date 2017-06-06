@@ -20,6 +20,7 @@
 
 	<script src="./js/dropzone.js"></script>
 	<script src="./js/dropzoneconfig.js"></script>
+	<script src="./js/script.js"></script>
 
 	
 	<link rel="stylesheet" href="css/dropzone.css">  
@@ -38,14 +39,8 @@
 		  $.each( data, function() {
 
 			$('#button-box').prepend( '<div class="form-box">'
-									+ '<form class="left" method="GET" action="/api/play">'
-									+ '<input type="hidden" name="id" value="' + this + '" />'
-									+ '<button type="submit" name="submit" class="btn btn-secondary"><p>' + this + '</p></button>'
-									+ '</form>'
-									+ '<form class="right" method="GET" action="/api/delete">'
-									+ '<input type="hidden" name="id" value="' + this + '" />'
-									+ '<button type="submit" name="submit" class="btn delete"><i class="fa fa-trash" aria-hidden="true"></i></button>'
-									+ '</form>'
+									+ '<button class="btn-play btn btn-secondary" id="' + this + '"><p>' + this + '</p></button>'
+									+ '<button class="btn-delete btn delete" id="' + this + '"><i class="fa fa-trash" aria-hidden="true"></i></button>'
 									+ '</div>'
 
 				);

@@ -5,13 +5,13 @@
 	clear:both;
 }
 
-.form-box .left {
+.form-box .btn-play {
 	height: 100%;
 	width: 85%;
 	float: left;
 }
 
-.form-box .right {
+.form-box .btn-delete {
 	width: 15%;
 	height: 100%;
 	float:right;
