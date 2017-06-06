@@ -3,7 +3,7 @@ Dropzone.options.uploadArea = {
   maxFilesize: 2, // MB
   maxFiles: 10,
   dictDefaultMessage: 'Drag an your sound here (manual reload required)',
-  acceptedFiles: ".mp3",
+  acceptedFiles: ".mp3,.wav",
   init: function() {
     this.on('success', function( file, resp ){
       console.log( file );

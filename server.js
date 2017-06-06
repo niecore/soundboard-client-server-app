@@ -19,7 +19,7 @@ var port = process.env.PORT || 8080;        // set our port
 var router = express.Router();              // get an instance of the express Router
 
 router.get('/sounds', function(req, res) {
-    fs.readdir(soundDir, (err, files) => {
+    fs.readdir(soundDir, function(err, files){
         files.sort(function(a, b) {
                        return fs.statSync(soundDir + a).mtime.getTime() - 
                               fs.statSync(soundDir + b).mtime.getTime();
