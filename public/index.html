@@ -29,30 +29,11 @@
 </head>
 
 <body>
+<div class="upload-box">
+    <form action="/api/upload" name="upload" class="dropzone dz-clickable" id="upload-area" enctype="multipart/form-data" method = "post"></form>
+</div>
 
 <div id="button-box" class="container-fluid buttons">
-
-	<script>
-	var apiURL = "/api/sounds";
-	$.getJSON(apiURL, function(data) {
-		var sounds = [];
-		  $.each( data, function() {
-
-			$('#button-box').prepend( '<div class="form-box">'
-									+ '<button class="btn-play btn btn-secondary" id="' + this + '"><p>' + this + '</p></button>'
-									+ '<button class="btn-delete btn delete" id="' + this + '"><i class="fa fa-trash" aria-hidden="true"></i></button>'
-									+ '</div>'
-
-				);
-		  	
-		  });
-	});
-	</script>
-
-	<div class="upload-box">
-	  <form action="/api/upload" name="upload" class="dropzone dz-clickable" id="upload-area" enctype="multipart/form-data" method = "post"></form>
-	</div>
-
 
 </div>
 

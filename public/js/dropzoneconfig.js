@@ -1,6 +1,6 @@
 Dropzone.options.uploadArea = {
   paramName: 'file',
-  maxFilesize: 2, // MB
+  maxFilesize: 20, // MB
   maxFiles: 10,
   dictDefaultMessage: 'Drag an your sound here (manual reload required)',
   acceptedFiles: ".mp3,.wav",
