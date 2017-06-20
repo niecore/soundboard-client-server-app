@@ -4,8 +4,8 @@ $(document).ready(function(){
 		  $.each( data, function() {
 
 			$('#button-box').prepend( '<div class="form-box">'
-									+ '<button class="btn-play btn btn-secondary" id="' + this + '"><p>' + this + '</p></button>'
-									+ '<button class="btn-delete btn delete" id="' + this + '"><i class="fa fa-trash" aria-hidden="true"></i></button>'
+									+ '<button class="btn-play btn btn-secondary" id="' + this.id + '"><p>' + this.id + ' [' + this.cnt + ']' + '</p></button>'
+									+ '<button class="btn-delete btn delete" id="' + this.id + '"><i class="fa fa-trash" aria-hidden="true"></i></button>'
 									+ '</div>'
 
 			);

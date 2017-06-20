@@ -3,12 +3,16 @@ var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var fs         = require('fs');
 var path       = require("path");
-var multipart = require('connect-multiparty');
+var multipart  = require('connect-multiparty');
+var redis      = require('redis');
 var multipartMiddleware = multipart();
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(express.static("public"));
+
+var redisServer = '127.0.0.1'
+var redisPort = '6379';
 
 var soundExt = 'mp3';
 var soundDir = './sounds/';
@@ -24,12 +28,34 @@ router.get('/sounds', function(req, res) {
                        return fs.statSync(soundDir + a).mtime.getTime() - 
                               fs.statSync(soundDir + b).mtime.getTime();
                    });
-        res.json(files);
+                   
+
+        redisClient.mget(files, function (err, plays) {
+        
+            var c = files.map(function (e, i) {
+                return {id:e, cnt:plays[i]};
+            });       
+             
+            res.json(c);
+        });
     });
 });
 
 router.get('/play', function(req, res) {
-	play.sound(soundDir + req.param('id'));
+    var id = req.param('id');
+	play.sound(soundDir + id);
+	
+    redisClient.incr(id, function(error, result) {
+
+        if (result) {
+            console.log("set " + result);
+        }
+        else
+        {
+            console.log("set 0");
+        }
+    });
+    
     res.redirect("back");
 });
 
@@ -57,5 +83,12 @@ app.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
+
+var redisClient = redis.createClient(redisPort, redisServer);
+
+redisClient.on('connect', function() {
+    console.log('Connected to Redis');
+});
+
 app.listen(port);
 console.log('Soundboard started on: ' + port);
