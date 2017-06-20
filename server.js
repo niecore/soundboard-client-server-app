@@ -35,8 +35,12 @@ router.get('/sounds', function(req, res) {
             var c = files.map(function (e, i) {
                 return {id:e, cnt:plays[i]};
             });       
+            
+            var sortedByPlays = c.sort(function(a, b) {
+                return a.cnt - b.cnt;
+            });
              
-            res.json(c);
+            res.json(sortedByPlays);
         });
     });
 });
