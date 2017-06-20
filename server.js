@@ -33,7 +33,9 @@ router.get('/sounds', function(req, res) {
         redisClient.mget(files, function (err, plays) {
         
             var c = files.map(function (e, i) {
-                return {id:e, cnt:plays[i]};
+                var playCnt = plays[i];
+                if (playCnt == null) playCnt = 0;
+                return {id:e, cnt:playCnt};
             });       
             
             var sortedByPlays = c.sort(function(a, b) {
