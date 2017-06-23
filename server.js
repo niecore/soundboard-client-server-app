@@ -47,6 +47,13 @@ router.get('/sounds', function(req, res) {
     });
 });
 
+router.get('/stopall', function(req, res) {
+	var sys = require('sys')
+	var exec = require('child_process').exec;
+	function puts(error, stdout, stderr) { sys.puts(stdout) }
+	exec("killall mplayer", puts);
+});
+
 router.get('/play', function(req, res) {
     var id = req.param('id');
 	play.sound(soundDir + id);

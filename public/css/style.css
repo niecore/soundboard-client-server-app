@@ -32,3 +32,9 @@
 	
 	border-style: dashed;
 }
+
+.form-box .btn-stop {
+    background: red;
+    position: fixed;
+    bottom: 10px;
+}
